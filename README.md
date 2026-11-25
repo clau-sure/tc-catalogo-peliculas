@@ -21,7 +21,7 @@ Activa el entorno con `source .venv/bin/activate` en macOS o Linux, o con `.\.ve
 
 Puedes ejecutar los notebooks 01 y 02 con los CSV del repo. Para el 03 y el 04, copia `.env.example` como `.env` y rellena las claves:
 
-- **TMDB (03)** · `TMDB_READ_ACCESS_TOKEN` o `TMDB_API_KEY`. Basta con una y la encuentras en los ajustes de tu cuenta de TMDB.
+- **TMDB (03)** · `TMDB_READ_ACCESS_TOKEN`. Lo encuentras en los ajustes de tu cuenta de TMDB.
 - **Gemini (04)** · `GEMINI_API_KEY`, desde Google AI Studio.
 
 Git ignora el archivo `.env`.
