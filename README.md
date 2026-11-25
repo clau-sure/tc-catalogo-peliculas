@@ -1,44 +1,44 @@
-# Catálogo de películas · Team Challenge
+# Catálogo de películas
 
-> Renombrad este fichero a `README.md` y completad las partes entre `<...>`.
+**Team Challenge · Equipo 5**
 
-**Equipo:** <nombre 1>, <nombre 2>, <nombre 3>, <nombre 4>
+En este reto hemos trabajado con los datos de MovieLens. Primero limpiamos y analizamos el catálogo con Pandas. Después usamos TMDB para buscar la sinopsis y la web oficial de diez películas, y Gemini para generar sinopsis en español.
 
-Catálogo de películas enriquecido a partir del dataset MovieLens: análisis con Pandas, sinopsis y web oficial desde la API de TMDB, y sinopsis en español generadas con Gemini.
+## Equipo
 
-## Reparto de funciones
+- **Claudia Álvarez** · Repositorio, limpieza y análisis de datos (notebooks 01 y 02).
+- **Jaime Revello** · TMDB y Gemini (notebooks 03 y 04).
 
-| Persona | Rol | Notebook / tarea |
-|---|---|---|
-| <nombre> | <rol> | <notebook> |
-
-## Instalación
+## Cómo arrancar
 
 ```bash
-git clone <URL del repo>
-cd <carpeta>
-python -m venv venv
-source venv/bin/activate        # Windows: venv\Scripts\activate
-pip install -r requirements.txt
-cp .env.example .env            # y rellenad las claves
+git clone https://github.com/clau-sure/tc-catalogo-peliculas.git
+cd tc-catalogo-peliculas
+python -m venv .venv
 ```
 
-## Claves necesarias
+Activa el entorno con `source .venv/bin/activate` en macOS o Linux, o con `.\.venv\Scripts\Activate.ps1` en PowerShell. Luego instala las dependencias con `python -m pip install -r requirements.txt`.
 
-| Variable | Dónde se obtiene |
-|---|---|
-| `TMDB_READ_ACCESS_TOKEN` o `TMDB_API_KEY` | themoviedb.org → Settings → API |
-| `GEMINI_API_KEY` | aistudio.google.com |
+Puedes ejecutar los notebooks 01 y 02 con los CSV del repo. Para el 03 y el 04, copia `.env.example` como `.env` y rellena las claves:
 
-## Ejecución
+- **TMDB (03)** · `TMDB_READ_ACCESS_TOKEN` o `TMDB_API_KEY`. Basta con una y la encuentras en los ajustes de tu cuenta de TMDB.
+- **Gemini (04)** · `GEMINI_API_KEY`, desde Google AI Studio.
 
-Ejecutad los notebooks **en este orden** (cada uno genera un CSV en `data/processed/` que usa el siguiente):
+Git ignora el archivo `.env`.
 
-1. `01_ingesta_limpieza.ipynb` → `movies_clean.csv`
-2. `02_analisis.ipynb`
-3. `03_tmdb.ipynb` → `movies10.csv`
-4. `04_gemini.ipynb` → `movies10_es.csv`
+## Notebooks
 
-## Resultados principales
+Abre el proyecto desde la carpeta del repositorio y selecciona `.venv` como kernel. Ejecuta los notebooks en este orden:
 
-<3–5 frases con lo más interesante que habéis encontrado>
+1. [Limpieza](01_ingesta_limpieza.ipynb). Prepara los títulos y los años y guarda `movies_clean.csv`.
+2. [Análisis](02_analisis.ipynb). Cruza las películas con las valoraciones y las etiquetas. Las tablas y las respuestas se ven en el notebook.
+3. [TMDB](03_tmdb.ipynb). Consulta los datos de diez películas y guarda `movies10.csv`.
+4. [Gemini](04_gemini.ipynb). Usa las sinopsis de TMDB y guarda el resultado en `movies10_es.csv`.
+
+Los CSV de salida están en `data/processed/`.
+
+## Qué nos salió
+
+- El catálogo tiene **9.742 películas**. En 13 títulos no pudimos sacar el año.
+- Al unir las tablas se mantuvieron las **100.836 valoraciones** y las **3.683 etiquetas**. Encontramos 18 películas sin valoraciones.
+- El CSV de TMDB tiene 10 películas. El de Gemini incluye 8 sinopsis en español.
